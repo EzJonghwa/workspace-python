@@ -2,11 +2,30 @@ from tkinter import *
 
 def convert_currency():
    print("환전 기능 영역")
+   try:
+      amount = float(amount_entry.get())
+      #선택 통화 가져오기
+      from_cur = from_currency_var.get()
+      to_cur = to_currency_var.get()
+      #원화를 달러로 변환
+      if from_cur == "KRW" and to_cur == "USD":
+         result =  amount / exchange_rate
+         result_label.config(text=f"변환 금액은: {result}달러 ")
+      # 덜러를 원화로 변환
+      elif from_cur == "USD" and to_cur == "KRW":
+         result = amount * exchange_rate
+         result_label.config(text=f"변환 금액은: {result}원 ")
+      else:
+         result = amount
+         result_label.config(text=f"{result} ")
+         
 
+   except ValueError:
+      result_label.config(text="숫자만 입력가능합니다.")
+      amount_entry.delete(0,END)
 
 # 환율 설정 (예시: 1 USD = 1300 KRW)
 exchange_rate = 1300
-
 
 # Tkinter 윈도우 설정
 window = Tk()

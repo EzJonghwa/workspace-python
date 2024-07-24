@@ -24,6 +24,7 @@ app = Tk()
 
 canvas = Canvas(app, width=400 , height= 300)
 canvas.pack()
+
 ball = canvas.create_oval(100, 150, 150, 200, fill="red")
 
 app.bind('<Left>', move_left)
