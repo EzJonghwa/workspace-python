@@ -1,7 +1,7 @@
 from tkinter import *
 
 def convert_currency():
-   print("환전 기능 영역")
+   
    try:
       amount = float(amount_entry.get())
       #선택 통화 가져오기
@@ -55,10 +55,12 @@ to_currency_menu.grid(row=2, column=1, padx=10, pady=10)
 
 # 변환 버튼
 convert_button = Button(window, text="Convert", command=convert_currency)
-convert_button.grid(row=3, column=0, columnspan=2, pady=10)
+convert_button.grid(row=4, column=0, columnspan=2, pady=10)
 
+label_area = Label(window, text="환전 가능영역")
+label_area.grid (row=3, column=3 )
 # 결과 출력
 result_label = Label(window, text="Converted Amount: ")
-result_label.grid(row=4, column=0, columnspan=2, pady=10)
+result_label.grid(row=5, column=0, columnspan=2, pady=10)
 
 window.mainloop()
