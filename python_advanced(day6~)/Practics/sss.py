@@ -1,51 +1,20 @@
-# Import Module
-from tkinter import *
- 
-# Create Object
+import pyautogui
+import time
+
+from pynput.mouse import*
+from tkinter import*
+
+def update_mouse_position_label():
+    x, y = root.winfo_pointerx(), root.winfo_pointery()
+    position_label.config(text=f"현재 좌표: x={x}, y={y}")
+    root.after(100, update_mouse_position_label)  # 100ms마다 업데이트
+
 root = Tk()
- 
-# Add Title
-root.title('On/Off Switch!')
- 
-# Add Geometry
-root.geometry("500x300")
- 
-# Keep track of the button state on/off
-#global is_on
-is_on = True
- 
-# Create Label
-my_label = Label(root, 
-    text = "The Switch Is On!", 
-    fg = "green", 
-    font = ("Helvetica", 32))
- 
-my_label.pack(pady = 20)
- 
-# Define our switch function
-def switch():
-    global is_on
-     
-    # Determine is on or off
-    if is_on:
-        on_button.config(image = off)
-        my_label.config(text = "The Switch is Off", 
-                        fg = "grey")
-        is_on = False
-    else:
-       
-        on_button.config(image = on)
-        my_label.config(text = "The Switch is On", fg = "green")
-        is_on = True
- 
-# Define Our Images
-on = PhotoImage(file = "on.png")
-off = PhotoImage(file = "off.png")
- 
-# Create A Button
-on_button = Button(root, image = on, bd = 0,
-                   command = switch)
-on_button.pack(pady = 50)
- 
-# Execute Tkinter
-root.mainloop()
+root.title("마우스 좌표 출력 프로그램")
+
+position_label =Label(root, text="마우스 좌표:")
+position_label.pack()
+
+update_mouse_position_label()  # 좌표 업데이트 시작
+
+root.mainloop() 

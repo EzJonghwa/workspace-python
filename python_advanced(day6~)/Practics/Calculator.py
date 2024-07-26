@@ -2,7 +2,7 @@ from tkinter import*
 
 cal = Tk()
 cal.geometry("300x400")
-am_ent = Text(cal,width=27,height=3)
+am_ent = Entry(cal,width=27,height=3)
 am_ent.grid(row=0 , column=0, columnspan=5)
 
 num_7_btn = Button(cal,text=7, width=5, height=3,)
